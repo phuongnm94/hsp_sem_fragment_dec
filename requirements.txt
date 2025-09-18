@@ -11,3 +11,7 @@ scikit-learn
 flash-attn
 tensorboard
 tensorboardX
+python-dotenv
+nltk
+seqeval
+torch-crf
