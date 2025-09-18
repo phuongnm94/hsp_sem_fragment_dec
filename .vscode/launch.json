@@ -1,0 +1,181 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [ 
+        {
+            "name": "llm-query",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/query_llm.py",
+            "args": [
+                "--model",
+                "huggyllama/llama-7b",
+                "--predicate_retriever",
+                "robertapair",
+                "--num_chunk",
+                "1",
+                "--query_type",
+                "cotmerging",
+                "--path_folder_data",
+                "${workspaceFolder}/data/top/CoT/dev"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "prepare-openai-query",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/query_llm.py",
+            "args": [
+                "--data_type",
+                "dev",
+                "--model",
+                "gpt-4o-mini", // "gpt-4o-mini",
+                "--predicate_retriever",
+                "robertapair",
+                "--num_chunk",
+                "1",
+                "--query_type",
+                "cotdfs",
+                "--path_folder_data",
+                "${workspaceFolder}/data/snips/dev",
+                // "${workspaceFolder}/data/atis_flatten/dev",
+                // "${workspaceFolder}/data/top/CoT/test",
+                "--prepare_openai_query",
+                // "--sem_comb",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "predicate_retrievier",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/predicate_retrievier.py",
+            "args": [
+                "--log_dir",
+                "${workspaceFolder}/data/top_check_size/size0.2",
+                "--max_epochs",
+                "3",
+                "--lr",
+                "5e-6",
+                "--rate_train",
+                "0.2",
+                "--no_train",
+                "--pretrained_checkpoint",
+                "${workspaceFolder}/data/top_check_size/size0.2/"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "data_generate",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/demo_generator.py",
+            "args": [
+                "--path_folder_data",
+                "${workspaceFolder}/data/unified_data/atis",
+                "--data_type",
+                "train",
+                "--sim_method",
+                "rouge",
+                "--predicate_retriever",
+                "wordngram",
+                "--data_prefix",
+                ""
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "TOPlr-extract_raw",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/low_resource/extract_raw.py",
+            "cwd": "${workspaceFolder}/src/low_resource/",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "TOPlr-raw2mrc",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/low_resource/raw2mrc.py",
+            "cwd": "${workspaceFolder}/src/low_resource/",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "test-lora-llm",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/lora_test_infer.py",
+            "cwd": "${workspaceFolder}/src/",
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "train-lora-llm",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/ft_llm.py",
+            "cwd": "${workspaceFolder}/src/",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "--do_train",
+                "--do_eval_dev",
+                "--do_eval_test",
+                "--ft_model_id",
+                "debug_ft",
+                "--base_model_id",
+                "mistralai/Mistral-7B-Instruct-v0.2",
+                "--prompting_type",
+                "cotv2dfs",
+                "--re_gen_data",
+                "--data_dir",
+                "${workspaceFolder}/data/snips/"
+            ]
+        },
+        {
+            "name": "analysis [excel]",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/evaluate/analysis.py",
+            "cwd": "${workspaceFolder}/",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [ 
+                // "--ft_model_path",
+                // "${workspaceFolder}/finetuned_llm/combineAtisTop_Llama-2-7b-hf_ep3_lrs-linear3e-4_cotv2_3shot_r32_devop/checkpoint-1150/top"
+            ]
+        },
+        {
+            "name": "scan analyze result",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/analyze_result.py",
+            "cwd": "${workspaceFolder}/",
+            "args": [],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "compute logical EM",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/re_eval_logic.py",
+            "cwd": "${workspaceFolder}/src/",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [ 
+                "--ft_model_path",
+                "${workspaceFolder}/finetuned_llm/snips_Qwen2.5-7B-Instruct_ep3_lrs-cosine3e-4_cotv2dfs_3shot_r32_L1024_seed42/"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+{
+  "model": "meta-llama/Llama-2-7b-hf",
+  "peft_lora_path": null,
+  "predicate_retriever": "robertapair",
+  "num_samples": "all",
+  "cur_chunk": 1,
+  "num_chunk": 1,
+  "top_k_demos": 10,
+  "path_folder_data": "/home/phuongnm/hsp_sem_fragment_dec/data/snips/dev",
+  "batch_size": 4,
+  "query_type": "cotdfs",
+  "data_type": "dev",
+  "force_batch_infer": false,
+  "sim_method": "rouge",
+  "sem_comb": false,
+  "prepare_openai_query": false
+}
