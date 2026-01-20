@@ -42,16 +42,17 @@ Init python environment
     
 ## Citation 
    
-```bibtex@article{MINHNGUYEN2025114256,
-title = {Improving hierarchical semantic parsing with LLMs: Demonstration selection and chain-of-thought prompting via semantic fragment decoding},
-journal = {Knowledge-Based Systems},
-volume = {328},
-pages = {114256},
-year = {2025},
-issn = {0950-7051},
-doi = {https://doi.org/10.1016/j.knosys.2025.114256},
-url = {https://www.sciencedirect.com/science/article/pii/S0950705125012973},
-author = {Phuong {Minh Nguyen} and Truong Dinh Do and Minh {Le Nguyen}}
+```bibtex
+@article{MINHNGUYEN2025114256,
+  title = {Improving hierarchical semantic parsing with LLMs: Demonstration selection and chain-of-thought prompting via semantic fragment decoding},
+  journal = {Knowledge-Based Systems},
+  volume = {328},
+  pages = {114256},
+  year = {2025},
+  issn = {0950-7051},
+  doi = {https://doi.org/10.1016/j.knosys.2025.114256},
+  url = {https://www.sciencedirect.com/science/article/pii/S0950705125012973},
+  author = {Phuong {Minh Nguyen} and Truong Dinh Do and Minh {Le Nguyen}}
 }
 
 ```
